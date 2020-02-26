@@ -47,5 +47,5 @@ return function(filename)
             end
         end
     end
-    return packages
+    return packages, packagesByName
 end
