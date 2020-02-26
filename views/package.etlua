@@ -1,3 +1,4 @@
+<a href="<%= url_for("index") %>">Return to index</a>
 <h3><%= package["Package"] %></h3>
 <p><%= package["Description"] %></p>
 <% if package["Depends"] then %>
