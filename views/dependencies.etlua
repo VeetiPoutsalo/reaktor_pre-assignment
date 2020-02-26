@@ -2,7 +2,12 @@
     <% for i = 1, #field do %>
         <li>
             <% for j = 1, #field[i] do %>
-                <i><%= field[i][j] %></i>
+                <% local package = field[i][j] %>
+                <% if packagesByName[package] then %>
+                    <i><a href="<%= url_for("package", {name = packagesByName[package]["Package"]}) %>"><%= field[i][j] %></a></i>
+                <% else %>
+                    <i><%= field[i][j] %></i>
+                <% end %>
                 <% if j ~= #field[i] then %>
                     <b>or</b>
                 <% end %>

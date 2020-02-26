@@ -19,6 +19,7 @@ app:get("package", "/package/:name", function(self)
     self:write({"Not Found", status = 404})
   else
     self.package = package
+    self.packagesByName = packagesByName
     return { render = "package" }
   end
 end)
