@@ -1,0 +1,6 @@
+<h1>Package index</h1>
+<ul>
+    <% for i = 1, #packages do %>
+        <li><a href="<%= url_for("package", {name = packages[i]["Package"]}) %>"><%= packages[i]["Package"] %></a></li>
+    <% end %>
+</ul>
