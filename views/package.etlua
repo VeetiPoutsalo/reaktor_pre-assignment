@@ -2,16 +2,9 @@
 <p><%= package["Description"] %></p>
 <% if package["Depends"] then %>
     <p>Dependencies:</p>
-    <ul>
-        <% for i = 1, #package["Depends"] do %>
-            <li>
-                <% for j = 1, #package["Depends"][i] do %>
-                    <i><%= package["Depends"][i][j] %></i>
-                    <% if j ~= #package["Depends"][i] then %>
-                        <b>or</b>
-                    <% end %>
-                <% end %>
-            </li>
-        <% end %>
-    </ul>
+    <% render("views.dependencies", {field = package["Depends"]}) %>
+<% end %>
+<% if package["Reverse Depends"] then %>
+    <p>Reverse dependencies:</p>
+    <% render("views.dependencies", {field = package["Reverse Depends"]}) %>
 <% end %>

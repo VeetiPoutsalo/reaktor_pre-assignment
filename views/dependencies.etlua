@@ -1,0 +1,12 @@
+<ul>
+    <% for i = 1, #field do %>
+        <li>
+            <% for j = 1, #field[i] do %>
+                <i><%= field[i][j] %></i>
+                <% if j ~= #field[i] then %>
+                    <b>or</b>
+                <% end %>
+            <% end %>
+        </li>
+    <% end %>
+</ul>
