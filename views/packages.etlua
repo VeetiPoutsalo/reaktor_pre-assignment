@@ -1,0 +1,12 @@
+<h1>All packages:</h1>
+<ul>
+    <% for i = 1, #packages do %>
+        <li>
+            <ul>
+                <% for k, v in pairs(packages[i]) do %>
+                    <li><%= k %>: <%= v %></li>
+                <% end %>
+            </ul>
+        </li>
+    <% end %>
+</ul>
