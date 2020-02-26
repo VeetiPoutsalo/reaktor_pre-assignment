@@ -2,11 +2,7 @@
 <ul>
     <% for i = 1, #packages do %>
         <li>
-            <ul>
-                <% for k, v in pairs(packages[i]) do %>
-                    <li><%= k %>: <%= v %></li>
-                <% end %>
-            </ul>
+            <% render("views.package", {package = packages[i]}) %>
         </li>
     <% end %>
 </ul>
