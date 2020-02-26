@@ -1,6 +1,11 @@
 <a href="<%= url_for("index") %>">Return to index</a>
-<h3><%= package["Package"] %></h3>
-<p><%= package["Description"] %></p>
+<h1><%= package["Package"] %></h1>
+<h4><%= package["Description"] %></h4>
+<% if package["Long Description"] then %>
+    <% for i = 1, #package["Long Description"] do %>
+        <p><%= package["Long Description"][i] %></p>
+    <% end %>
+<% end %>
 <% if package["Depends"] then %>
     <p>Dependencies:</p>
     <% render("views.dependencies", {field = package["Depends"]}) %>
