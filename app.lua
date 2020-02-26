@@ -4,6 +4,9 @@ app:enable("etlua")
 
 local fileParser = require("fileParser")
 local packages = fileParser("/var/lib/dpkg/status")
+table.sort(packages, function(a, b)
+  return a["Package"] < b["Package"]
+end)
 
 app:get("/", function(self)
   self.packages = packages
