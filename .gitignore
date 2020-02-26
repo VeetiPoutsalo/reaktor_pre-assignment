@@ -1,0 +1,4 @@
+# Ignore files from Lapis' Docker volume
+*_temp/
+*.compiled
+logs/
