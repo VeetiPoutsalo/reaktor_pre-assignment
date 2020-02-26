@@ -2,9 +2,11 @@ return function(filename)
     local function trim(str) return string.match(str, "^%s*(.-)%s*$") end
     local packages = {}
     local packagesByName = {}
+    local lastField
     for line in io.lines(filename) do
         local field, data = line:match("(.-): (.*)")
         if field then
+            lastField = field
             if field == "Package" then
                 packages[#packages + 1] = {[field] = data}
                 packagesByName[data] = packages[#packages]
@@ -26,6 +28,18 @@ return function(filename)
             else
                 assert(packages[#packages])
                 packages[#packages][field] = data
+            end
+        elseif lastField == "Description" then
+            local content = trim(line)
+            if content ~= "" then
+                packages[#packages]["Long Description"] = packages[#packages]["Long Description"] or {""}
+                local longDesc = packages[#packages]["Long Description"]
+                if content == "." then
+                    longDesc[#longDesc + 1] = ""
+                    longDesc[#longDesc + 1] = ""
+                else
+                    longDesc[#longDesc] = longDesc[#longDesc] .. " " .. content
+                end
             end
         end
     end
