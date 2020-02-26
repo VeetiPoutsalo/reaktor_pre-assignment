@@ -1,6 +1,7 @@
 local lapis = require("lapis")
 local app = lapis.Application()
 app:enable("etlua")
+app.layout = require("views.layout")
 
 local fileParser = require("fileParser")
 local packages, packagesByName = fileParser("/var/lib/dpkg/status")
@@ -20,6 +21,7 @@ app:get("package", "/package/:name", function(self)
   else
     self.package = package
     self.packagesByName = packagesByName
+    self.page_title = string.format("Package: %s", package["Package"])
     return { render = "package" }
   end
 end)
